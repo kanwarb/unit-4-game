@@ -2,6 +2,8 @@ var computerNumber = Math.floor((Math.random() * 39) + 1);
 var imageValue = [];
 var myCrystalsImages = ["assets/images/diamond.jpg", "assets/images/bluesaphire.jpg",'assets/images/lightupcrystal.jpg','assets/images/quartz.jpg'];
 var myPoints =0;
+var myWins =0;
+var myLosses =0;
 
 function crystalNumber(){
     var crystalNumber = Math.floor((Math.random() * 10) + 1);
@@ -31,7 +33,6 @@ function playGame(){
     $(".img-thumbnail").on("click", function() {
         var imageValue = ($(this).attr("data-crystal-value"));
         imageValue = parseInt(imageValue);
-
         addmySelectedImageValues(imageValue);
         
      })
@@ -45,23 +46,30 @@ function addmySelectedImageValues(imageValue){
     $("#myScore").text(myPoints);
     if(myPoints === computerNumber)
     {
+        myWins++;
+        $("#myWinsId").text(" " + myWins)  ;
         resetValues();
+        
         alert("you won this round ");
 
     }
     else if(myPoints > computerNumber){
         
+        myLosses++;
+        $("#myLossesId").text(" " + myLosses);
         resetValues();
         alert("you Lost this round ");
     }    
 
 }
 function resetValues(){
-     // console.clear();
+      console.clear();
       myPoints =0;
       computerNumber = 0;
       imageValue = [];
       myPoints =0;
+    //   myWins =0;
+    //   myLosses = 0;
       computerNumber = Math.floor((Math.random() * 39) + 1);
       crystalNumber();
       updateImageCrystalValue();
