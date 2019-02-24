@@ -16,7 +16,7 @@ function addImageCrystalToDiv(){
     for(i=0; i < 4; i++){
         imageValue[i] = crystalNumber();
         var imageCrystal = $("<img>");  // add crystal image to the div 
-        imageCrystal.addClass("img-thumbnail");
+        imageCrystal.addClass("img-thumbnail col-sm-3 col-xs-12  mt-5");
         imageCrystal.attr("id", "crystal-" +i);
         imageCrystal.attr("src", myCrystalsImages[i] );
         imageCrystal.attr( "data-crystal-value", crystalNumber());
@@ -51,8 +51,9 @@ function addmySelectedImageValues(imageValue){
         myWins++;
         $("#myWinsId").text(" " + myWins)  ;
         resetValues();
+        animateCSS("W");
+        resetValues();
         
-        alert("you won this round ");
 
     }
     else if(myPoints > computerNumber){
@@ -60,7 +61,9 @@ function addmySelectedImageValues(imageValue){
         myLosses++;
         $("#myLossesId").text(" " + myLosses);
         resetValues();
-        alert("you Lost this round ");
+        animateCSS("L");
+        resetValues();
+       
     }    
 
 }
@@ -70,6 +73,7 @@ function resetValues(){
       computerNumber = 0;
       imageValue = [];
       myPoints =0;
+      myClasses='';
     //   myWins =0;
     //   myLosses = 0;
       computerNumber = Math.floor(Math.random()*(maxCN - minCN+1)+ minCN); 
@@ -77,8 +81,36 @@ function resetValues(){
       updateImageCrystalValue();
       $("#playerTotalId").text(computerNumber);
       $("#myScore").text(0);
+      $("#animateCSSId").attr( "display", "hidden" );
 
 }
+
+function animateCSS(myResult){
+
+        var animateWin = $("#animateCSSId");
+        var myResponse='';
+        var animateCSS = $("<div>");
+        animateWin.addClass("bounce animated delay-2s");
+        $("#animateCSSId").removeAttr( "display", "hidden" );
+        animateWin.attr("display", "show")
+        if(myResult == "W")
+        {
+         animateWin.addClass("bg-success");
+         myResponse = "You Won ! ";
+        } 
+        else if(myResult =="L")
+        {
+            animateWin.addClass("bg-warning");
+            myResponse = "You Lose This round";
+        }
+        animateWin.attr("display" , "block" );
+        $("#animateCSSId").append(animateWin);
+        $("h1").text(myResponse);
+    
+
+    
+    }
+
 $("#playerTotalId").text(computerNumber)
 addImageCrystalToDiv();
 playGame();

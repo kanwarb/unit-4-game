@@ -2,11 +2,29 @@
     margin-top: 100rem;
     height: 20rem;
     width: fit-content;
+    border-radius: 5px;
 
 }
 
 .crystal-image {
 
  height: 200px;
+ widows: 150px;
 
+}
+
+.animateCSS{
+    height: 300px;
+    width:  600px;
+    font-size: 20rem;
+    display: hidden;
+}
+
+heading {
+    margin-top: 10rem;
+    height: 15rem;
+}
+
+html {
+    background: url("../images/dark-paths.png");
 }
