@@ -85,8 +85,6 @@ function resetValues(){
       $("#playerTotalId").text(computerNumber);
       $("#myScore").text(0);
      
-
-
 }
 
 
