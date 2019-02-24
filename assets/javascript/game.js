@@ -32,9 +32,10 @@ function updateImageCrystalValue() {
 }    
 
 function playGame(){
-    $(".img-thumbnail").on("click", function() {
+    $(".img-thumbnail").on("click", function(e) {
         var imageValue = ($(this).attr("data-crystal-value"));
         imageValue = parseInt(imageValue);
+
         addmySelectedImageValues(imageValue);
         
      })
@@ -50,8 +51,9 @@ function addmySelectedImageValues(imageValue){
     {
         myWins++;
         $("#myWinsId").text(" " + myWins)  ;
-        resetValues();
+        // resetValues();
         animateCSS("W");
+        showStatus("bounce");
         resetValues();
         
 
@@ -60,8 +62,9 @@ function addmySelectedImageValues(imageValue){
         
         myLosses++;
         $("#myLossesId").text(" " + myLosses);
-        resetValues();
+        // resetValues();
         animateCSS("L");
+        showStatus("zoomIn");
         resetValues();
        
     }    
@@ -81,17 +84,25 @@ function resetValues(){
       updateImageCrystalValue();
       $("#playerTotalId").text(computerNumber);
       $("#myScore").text(0);
-      $("#animateCSSId").attr( "display", "hidden" );
+     
+
 
 }
+
+
+function showStatus(x) {
+    
+    $('#animateCSSId').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass();
+    });
+  };
 
 function animateCSS(myResult){
 
         var animateWin = $("#animateCSSId");
         var myResponse='';
         var animateCSS = $("<div>");
-        animateWin.addClass("bounce animated delay-2s");
-        $("#animateCSSId").removeAttr( "display", "hidden" );
+        animateWin.addClass("bounce animated");
         animateWin.attr("display", "show")
         if(myResult == "W")
         {
@@ -104,8 +115,15 @@ function animateCSS(myResult){
             myResponse = "You Lose This round";
         }
         animateWin.attr("display" , "block" );
-        $("#animateCSSId").append(animateWin);
-        $("h1").text(myResponse);
+        // $("#animateCSSId").append(animateWin);
+ 
+        $("h2").text(myResponse);
+        
+
+        $('.js--animation').change(function(){
+            var anim = $(this).val();
+            showStatus("zoomIn");
+          });
     
 
     
