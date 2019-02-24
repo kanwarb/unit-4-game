@@ -28,3 +28,7 @@ heading {
 html {
     background: url("../images/dark-paths.png");
 }
+
+#myScore {
+    margin-left: 5px;
+}
