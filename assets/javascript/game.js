@@ -1,4 +1,6 @@
-var computerNumber = Math.floor((Math.random() * 39) + 1);
+var minCN =19;
+var maxCN =120;
+var computerNumber = Math.floor(Math.random()*(maxCN - minCN+1)+ minCN); 
 var imageValue = [];
 var myCrystalsImages = ["assets/images/diamond.jpg", "assets/images/bluesaphire.jpg",'assets/images/lightupcrystal.jpg','assets/images/quartz.jpg'];
 var myPoints =0;
@@ -6,7 +8,7 @@ var myWins =0;
 var myLosses =0;
 
 function crystalNumber(){
-    var crystalNumber = Math.floor((Math.random() * 10) + 1);
+    var crystalNumber = Math.floor((Math.random() * 12) + 1);
     return crystalNumber;
 }
 
@@ -70,7 +72,7 @@ function resetValues(){
       myPoints =0;
     //   myWins =0;
     //   myLosses = 0;
-      computerNumber = Math.floor((Math.random() * 39) + 1);
+      computerNumber = Math.floor(Math.random()*(maxCN - minCN+1)+ minCN); 
       crystalNumber();
       updateImageCrystalValue();
       $("#playerTotalId").text(computerNumber);
