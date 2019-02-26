@@ -5,11 +5,14 @@
     border-radius: 5px;
 
 }
-
+img:hover {
+    height: 200px;
+    width: 250px
+}
 .crystal-image {
 
  height: 200px;
- widows: 150px;
+ width: 150px;
 
 }
 
@@ -26,9 +29,17 @@ heading {
 }
 
 html {
-    background: url("../images/dark-paths.png");
+    background: url("../images/starwars.jpg");
 }
 
 #myScore {
     margin-left: 5px;
+}
+
+.card {
+    border-radius: 10px;
+}
+div,
+heading {
+    border-radius: 10px;
 }

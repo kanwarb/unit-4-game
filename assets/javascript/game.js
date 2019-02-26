@@ -6,6 +6,7 @@ var myCrystalsImages = ["assets/images/diamond.jpg", "assets/images/bluesaphire.
 var myPoints =0;
 var myWins =0;
 var myLosses =0;
+var condition;
 
 function crystalNumber(){
     var crystalNumber = Math.floor((Math.random() * 12) + 1);
@@ -35,7 +36,7 @@ function playGame(){
     $(".img-thumbnail").on("click", function(e) {
         var imageValue = ($(this).attr("data-crystal-value"));
         imageValue = parseInt(imageValue);
-
+        //$.confetti.stop();
         addmySelectedImageValues(imageValue);
         
      })
@@ -54,22 +55,31 @@ function addmySelectedImageValues(imageValue){
         // resetValues();
         animateCSS("W");
         showStatus("bounce");
+       // clearTimeout(startConfetti);
         resetValues();
-        
-
     }
     else if(myPoints > computerNumber){
         
         myLosses++;
         $("#myLossesId").text(" " + myLosses);
-        // resetValues();
         animateCSS("L");
         showStatus("zoomIn");
+        // setTimeout( startConfetti, 5000);
+        // setTimeout( stopConfetti);
         resetValues();
-       
     }    
 
 }
+
+function startConfetti() {
+    $.confetti.start();
+}
+
+function stopConfetti() {
+    $.confetti.stop();
+    $.confetti.clear();
+}
+
 function resetValues(){
       console.clear();
       myPoints =0;
@@ -77,13 +87,14 @@ function resetValues(){
       imageValue = [];
       myPoints =0;
       myClasses='';
-    //   myWins =0;
-    //   myLosses = 0;
+
       computerNumber = Math.floor(Math.random()*(maxCN - minCN+1)+ minCN); 
       crystalNumber();
       updateImageCrystalValue();
       $("#playerTotalId").text(computerNumber);
       $("#myScore").text(0);
+      // setTimeout(function () {confetti.stop()}, 3000);
+      
      
 }
 
@@ -93,6 +104,8 @@ function showStatus(x) {
     $('#animateCSSId').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
       $(this).removeClass();
     });
+    //var options =  { to: { display: hidden } };
+    //$( "#animateCSSId" ).hide( '.js-animation', {display: none}, 1000, callback );
   };
 
 function animateCSS(myResult){
@@ -112,8 +125,7 @@ function animateCSS(myResult){
             animateWin.addClass("bg-warning");
             myResponse = "You Lose This round";
         }
-        animateWin.attr("display" , "block" );
-        // $("#animateCSSId").append(animateWin);
+      //  animateWin.attr("display" , "block" );
  
         $("h2").text(myResponse);
         
