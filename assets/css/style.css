@@ -2,11 +2,16 @@
     margin-top: 100rem;
     height: 20rem;
     width: fit-content;
-    border-radius: 5px;
+    border-radius: 10px;
 
 }
+img{
+    background-color: transparent;
+    border-radius: 50%;
+    margin: auto;
+}
 img:hover {
-    height: 200px;
+    height: 150px;
     width: 250px
 }
 .crystal-image {
@@ -16,30 +21,55 @@ img:hover {
 
 }
 
-.animateCSS{
-    height: 300px;
-    width:  600px;
+#animateCSSId{
+    height: 100px;
+    width:  500px;
     font-size: 20rem;
-    display: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
-heading {
-    margin-top: 10rem;
-    height: 15rem;
-}
 
 html {
-    background: url("../images/starwars.jpg");
+    background: url("../images/starwars..jpg");
 }
 
 #myScore {
     margin-left: 5px;
+    font-size: 50px;
+    margin-top: 2rem;
+
 }
 
 .card {
     border-radius: 10px;
 }
-div,
-heading {
+div {
     border-radius: 10px;
+}
+
+span {
+    margin: auto;
+}
+
+@media screen and (max-width: 500px) {
+
+    img {
+        background-color: transparent;
+        border-radius: 50%;
+        height: auto;
+        width: 100px;
+        margin: auto;
+    }    
+    img:hover {
+        height: 50px;
+        width: 75px;
+    }
+    .crystal-image {
+    
+     height: 50px;
+     width:  100px;
+    
+    }
+
 }
